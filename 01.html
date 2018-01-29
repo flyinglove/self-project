@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>列表项</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<style>
+		.item {
+			padding: 13px 0;
+			overflow: hidden;
+			background: #fff;
+		}
+		.l {
+			float: left;
+		}
+		.r {
+			float: right;
+		}
+		.item .content {
+			width: calc(100% - 87px);
+			display: inline-block;
+			padding-left: 10px;
+			box-sizing: border-box;
+			font-size: 0;
+		}
+		.item .title {
+			font-family: PingFangSC-Medium;
+			font-size: 16px;
+			color: #292d33;
+		}
+		.sell-info {
+			font-family: PingFangSC-Regular;
+			color: #525a66;
+			font-size: 0;
+			margin-top: 9px;
+		}
+		.sell-info span {
+			margin-right: 15px;
+			font-size: 13px;
+		}
+
+		/*评价标签*/
+		.comment-num {
+			position: relative;
+			display: inline-block;
+			background-image: linear-gradient(to right, #fff 0, #fff 50%, #c39869 50%, #c39869 100%);
+			width: 47px;
+			padding-left: 27px;
+			box-sizing: border-box;
+			line-height: 14px;
+			color: #fff;
+			font-size: 11px;
+			border-radius: 2px;
+			margin-right: 7px;
+		}
+		.comment-num::before {
+			content: '评分';
+			display: block;
+			position: absolute;
+			padding-left: 2px;
+			box-sizing: border-box;
+			left: 0;
+			font-size: 11px;
+			color: #c39869;
+		}
+		.comment-num::after {
+			content: '';
+			display: block;
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 200%;
+			height: 200%;
+			border: 1px solid #c39869;
+			transform: scale(.5, .5);
+			transform-origin: 0 0;
+			box-sizing: border-box;
+		}
+		.evaluate {
+			font-size: 0;
+			margin-top: 10px;
+			display: block;
+			height: 15px;
+			overflow: hidden;
+		}
+		.evaluate > span {
+			font-size: 11px;
+			color: #c39869;
+			margin-right: 5px;
+			/*margin-bottom: 20px;*/
+			display: inline-block;
+		}
+
+		/*内容标签*/
+		.content-tag {
+			font-size: 0;
+			margin-top: 10px;
+			display: block;
+			height: 15px;
+			overflow: hidden;
+		}
+		.content-tag > span {
+			font-size: 11px;
+			color: #292d33;
+			position: relative;
+			padding-left: 2px;
+			padding-right: 2px;
+			margin-right: 5px;
+		}
+		.content-tag > span::before {
+			content: '';
+			display: block;
+			box-sizing: border-box;
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 200%;
+			height: 200%;
+			border: 1px solid #292d33;
+			border-radius: 4px;
+			transform: scale(.5, .5);
+			transform-origin: 0 0;
+		}
+		.price {
+			font-size: 0;
+			margin-top: 7px;
+		}
+		.price .price-info {
+			display: inline-block;
+			/*margin-right: 7px;*/
+		}
+		.price .price-num {
+			font-size: 18px;
+			color: #e6454a;
+			margin-right: 3px;
+		}
+		
+		.price .old-price {
+			font-size: 13px;
+			color: #848c99;
+			text-decoration: line-through;
+			/*margin-right: 7px;*/
+		}
+		.price .price-info span:last-child {
+			margin-right: 7px;
+		}
+		.price .price-tag {
+			border-radius: 2px;
+			background-color: #e6454a;
+			color: #fff;
+			font-size: 11px;
+			line-height: 11px;
+			padding: 2px 2px 1px;
+			margin-right: 5px;
+		}
+
+		.address {
+			font-size: 12px;
+			font-family: PingFangSC-Regular;
+			color: #292d33;
+			margin-top: 12px;
+		}
+		.address::before {
+			content: '';
+			display: block;
+			border: 1px solid #e8ebf0;
+			transform: scaleY(.5);
+		}
+	</style>
+</head>
+<body>
+	<div class="item">
+		<img class="l" src="./01.jpg" alt="" width="87" height="87">
+		<div class="content l">
+			<div class="title">【特价】iphone全系列换屏电池</div>
+			<div class="sell-info">
+				<span>已售239</span>
+				<span>接单率98%</span>
+			</div>
+			<div class="evaluate">
+				<div class="comment-num">
+					5.6
+				</div>
+				<span>价格合理</span>
+				<span>价格合理</span>
+				<!-- <span>价格合理</span> -->
+				<!-- <span>价格合理</span> -->
+				<!-- <span>价格合理</span> -->
+			</div>
+			<div class="content-tag">
+				<span>价格合理</span>
+				<span>价格合理</span>
+				<!-- <span>价格合理</span> -->
+			</div>
+			<div class="price">
+				<div class="price-info">
+					<span class="price-num">￥70</span>
+					<span class="old-price">￥50</span>
+				</div>
+				<span class="price-tag">定金</span>
+				<span class="price-tag">定金</span>
+				<span class="price-tag">定金</span>
+			</div>
+			<div class="address">
+				<span class="seller-info">
+					天成维修|手机维修回收
+				</span>
+				<span class="distance">201m</span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
