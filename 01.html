@@ -1,20 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 	<meta charset="UTF-8">
 	<title>列表项</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<style>
-		.item {
-			padding: 13px 0;
-			overflow: hidden;
-			background: #fff;
+		* {
+			margin: 0;
+			padding: 0;
+			/*color: #000;*/
+		}
+		body {
+			font-family: "PingFangSC-Medium", Arial, Helvetica;
 		}
 		.l {
 			float: left;
 		}
 		.r {
 			float: right;
+		}
+		.item {
+			padding: 13px 0;
+			overflow: hidden;
+			background: #fff;
 		}
 		.item .content {
 			width: calc(100% - 87px);
@@ -27,12 +35,48 @@
 			font-family: PingFangSC-Medium;
 			font-size: 16px;
 			color: #292d33;
+			
+			/*width: 100%;*/
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-right: 5px;
+		}
+		.item .item-title {
+			flex: 1;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+		.item .icon-tag {
+			font-size: 11px;
+			color: #c39869;
+			position: relative;
+			margin-left: 5px;
+			padding-left: 2px;
+			padding-right: 2px;
+			display: inline-block;
+			/*height: 11px;*/
+		}
+		.item .icon-tag::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 200%;
+			height: 200%;
+			box-sizing: border-box;
+			border: 1px solid #c39869;
+			border-radius: 4px;
+			transform:scale(.5, .5);
+			transform-origin: 0 0;
 		}
 		.sell-info {
 			font-family: PingFangSC-Regular;
 			color: #525a66;
 			font-size: 0;
-			margin-top: 9px;
+			margin-top: 8px;
+			line-height: 1;
 		}
 		.sell-info span {
 			margin-right: 15px;
@@ -43,15 +87,18 @@
 		.comment-num {
 			position: relative;
 			display: inline-block;
-			background-image: linear-gradient(to right, #fff 0, #fff 50%, #c39869 50%, #c39869 100%);
-			width: 47px;
+			background-image: linear-gradient(to right, #fff 0, #fff calc(50% + 2px), #c39869 calc(50% + 2px), #c39869 100%);
+			width: 46px;
 			padding-left: 27px;
 			box-sizing: border-box;
-			line-height: 14px;
+			line-height: 11px;
+			padding-top: 2px;
+			padding-bottom: 1px;
 			color: #fff;
 			font-size: 11px;
 			border-radius: 2px;
 			margin-right: 7px;
+			/*vertical-align: -1px;*/
 		}
 		.comment-num::before {
 			content: '评分';
@@ -62,6 +109,8 @@
 			left: 0;
 			font-size: 11px;
 			color: #c39869;
+			line-height: 1;
+			/*padding: 2px 2px 1px;*/
 		}
 		.comment-num::after {
 			content: '';
@@ -78,7 +127,7 @@
 		}
 		.evaluate {
 			font-size: 0;
-			margin-top: 10px;
+			margin-top: 9px;
 			display: block;
 			height: 15px;
 			overflow: hidden;
@@ -89,6 +138,7 @@
 			margin-right: 5px;
 			/*margin-bottom: 20px;*/
 			display: inline-block;
+			margin-top: -2px;
 		}
 
 		/*内容标签*/
@@ -96,16 +146,20 @@
 			font-size: 0;
 			margin-top: 10px;
 			display: block;
-			height: 15px;
+			/*height: 18px;*/
 			overflow: hidden;
 		}
 		.content-tag > span {
 			font-size: 11px;
 			color: #292d33;
 			position: relative;
-			padding-left: 2px;
-			padding-right: 2px;
+			/*padding-left: 2px;*/
+			/*padding-right: 2px;*/
 			margin-right: 5px;
+			float: left;
+			line-height: 1;
+			padding: 2px 2px 1px;
+			/*vertical-align: top;*/
 		}
 		.content-tag > span::before {
 			content: '';
@@ -123,10 +177,16 @@
 		}
 		.price {
 			font-size: 0;
-			margin-top: 7px;
+			margin-top: 9px;
+			display: flex;
+			align-items: flex-start;
+			margin-top: 4px;
 		}
 		.price .price-info {
 			display: inline-block;
+			vertical-align: -2px;
+			line-height: 1;
+			margin-top: 5px;
 			/*margin-right: 7px;*/
 		}
 		.price .price-num {
@@ -149,22 +209,50 @@
 			background-color: #e6454a;
 			color: #fff;
 			font-size: 11px;
-			line-height: 11px;
+			display: inline-block;
+			line-height: 1;
 			padding: 2px 2px 1px;
 			margin-right: 5px;
+			margin-top: 5px;
 		}
-
+		.price .price-tag-list {
+			flex: 1;
+		}
 		.address {
 			font-size: 12px;
 			font-family: PingFangSC-Regular;
 			color: #292d33;
-			margin-top: 12px;
+			margin-top: 10px;
+			overflow: hidden;
 		}
 		.address::before {
 			content: '';
 			display: block;
 			border: 1px solid #e8ebf0;
 			transform: scaleY(.5);
+			margin-bottom: 10px;
+		}
+		.seller-info::before {
+			content: '';
+			display: inline-block;
+			width: 12px;
+			height: 12px;
+			background-image: url('./icon_shop.png');
+			background-repeat: no-repeat;
+			background-size: 12px 12px;
+			vertical-align: -2px;
+		}
+		.seller-info {
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+		.address-info {
+			display: flex;
+			justify-content: space-between;
+		}
+		.distance {
+			margin-top: 1px;
 		}
 	</style>
 </head>
@@ -172,7 +260,14 @@
 	<div class="item">
 		<img class="l" src="./01.jpg" alt="" width="87" height="87">
 		<div class="content l">
-			<div class="title">【特价】iphone全系列换屏电池</div>
+			<div class="title">
+				<span class="item-title">
+					【特价】iphone全系列换屏电池
+				</span>
+				<span class="icon-tag">
+					企业
+				</span>
+			</div>
 			<div class="sell-info">
 				<span>已售239</span>
 				<span>接单率98%</span>
@@ -197,15 +292,25 @@
 					<span class="price-num">￥70</span>
 					<span class="old-price">￥50</span>
 				</div>
-				<span class="price-tag">定金</span>
-				<span class="price-tag">定金</span>
-				<span class="price-tag">定金</span>
+				<div class="price-tag-list">
+					<span class="price-tag">定金</span>
+					<span class="price-tag">定金</span>
+					<span class="price-tag">定金</span>
+					<span class="price-tag">定金</span>
+					<span class="price-tag">定金</span>
+					<span class="price-tag">定金</span>
+					<span class="price-tag">定金</span>
+					<span class="price-tag">定金</span>
+					<span class="price-tag">定金</span>
+				</div>
 			</div>
 			<div class="address">
-				<span class="seller-info">
+				<div class="address-info">
+					<span class="seller-info l">
 					天成维修|手机维修回收
 				</span>
-				<span class="distance">201m</span>
+				<span class="distance r">201m</span>
+				</div>
 			</div>
 		</div>
 	</div>
